@@ -12,3 +12,8 @@ jobs:
     - name: Display Message
       run: echo "TEEESSSTT!!!"
       run: echo ${{ env.TEST }}
+
+
+if: always()
+  run: |
+    curl -X "DELETE" -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" "https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ github.run_id }}"
