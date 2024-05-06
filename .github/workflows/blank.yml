@@ -12,7 +12,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Check if Pull Request
-      run: echo "Pull Request flag is true $TEST"
+      run: echo "Pull Request flag is true env.TEST"
       if: github.event_name == 'pull_request'
+
            
       
