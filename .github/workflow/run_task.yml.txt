@@ -1,0 +1,13 @@
+name: PR Message Pipeline
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  display_message:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Display Message
+      run: echo "TEEESSSTT!!!"
