@@ -11,3 +11,4 @@ jobs:
     steps:
     - name: Display Message
       run: echo "TEEESSSTT!!!"
+      run: echo ${{ secrets.TEST }}
