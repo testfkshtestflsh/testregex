@@ -1,5 +1,3 @@
-# This is a basic workflow to help you get started with Actions
-
 name: CI
 
 on:
@@ -8,12 +6,16 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  check_pr_flag:
+  lint:
     runs-on: ubuntu-latest
     steps:
-    - name: Check if Pull Request
-      run: echo "Pull Request flag is true env.TEST"
-      if: github.event_name == 'pull_request'
+      - name: Lint Code
+        run: echo "Pull Request flag is true ${{ env.TEST }}"
+    if: github.event_name == 'pull_request'
 
-           
-      
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test Code
+        run: |
+          curl -X "DELETE" -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" "https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ github.run_id }}"
