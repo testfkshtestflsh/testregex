@@ -1,0 +1,18 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  check_pr_flag:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check if Pull Request
+      run: echo "Pull Request flag is true"
+      if: github.event_name == 'pull_request'
+
+      
